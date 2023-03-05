@@ -9,7 +9,7 @@ app.post(`/users`, (req: Request, res: Response) => {
   const createUser = userModels(req.body);
   createUser
     .save()
-    .then((data: JSON) => res.json(data))
+    .then((data: JSON) => res.json({ msg: "Create User" }))
     .catch((error: JSON) => res.json({ message: error }));
 });
 

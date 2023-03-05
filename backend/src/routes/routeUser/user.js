@@ -8,7 +8,11 @@ app.post("/users", function (req, res) {
     var createUser = userModels(req.body);
     createUser
         .save()
-        .then(function (data) { return res.json(data); })["catch"](function (error) { return res.json({ message: error }); });
+        .then(function (data) {
+        if (data) {
+            res.json({ msg: "Create User" });
+        }
+    })["catch"](function (error) { return res.json({ message: error }); });
 });
 // get all users
 app.get("/users", function (req, res) {
